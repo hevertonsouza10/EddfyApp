@@ -206,7 +206,7 @@ watch(
                     </div>
                 </div>
                 <span class="text-green-500 font-medium">%24+ </span>
-                <span class="text-500">Desde Hoje</span>
+                <span class="text-500">Desde Hojedd</span>
             </div>
         </div>
         <div class="col-12 lg:col-6 xl:col-2">
