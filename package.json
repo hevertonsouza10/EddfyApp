@@ -1,5 +1,5 @@
 {
-    "name": "sakai-vue",
+    "name": "vue-app-eddfy",
     "version": "3.6.0",
     "scripts": {
         "dev": "vite",
