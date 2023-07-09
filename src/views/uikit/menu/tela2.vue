@@ -1,5 +1,4 @@
-<template>
-    <h4>Resumo de Custo</h4>
+    <!---<h4>Resumo de Custo</h4>
     <div class="">
         <h5>Tipo: Fixo</h5>
         <h5>Categoria: Aluguel</h5>
@@ -21,4 +20,24 @@
         <a style="margin-right: 1%" href="http://localhost:5173/"> <Button label="Salvar" class="p-button-success mr-2 mb-2" /></a>
         <a href="http://localhost:5173/"><Button label="Cancelar" class="p-button-danger mr-2 mb-2" /></a>
     </div>
+
+    !--->
+
+<script setup>
+    
+    const trocarTela = (tela) => {
+        this.$emit('trocarTela', tela);
+};
+</script>
+
+<template>
+    <div>
+        tela 3
+        tela 3
+        tela 3
+        tela 3
+        tela 3
+        <button @click="trocarTela('tela3')">ir para a tela 3</button>
+    </div>
 </template>
+

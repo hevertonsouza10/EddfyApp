@@ -1,7 +1,13 @@
 <script setup>
-import { onMounted, ref, watch, onBeforeMount  } from 'vue';
+import { onMounted, ref, watch, onBeforeMount } from 'vue';
 import ProductService from '@/service/ProductService';
 import { useLayout } from '@/layout/composables/layout';
+import Tela1 from '../views/uikit/menu/Tela1.vue'
+import SeatDemo from '../views/uikit/menu/SeatDemo.vue'
+import PersonalDemo from '../views/uikit/menu/PersonalDemo.vue'
+import PaymentDemo from '../views/uikit/menu/PaymentDemo.vue'
+import CreateCost from '../components/CreateCost.vue'
+
 
 // variavel que pode ser importada junto de "vue"  {reactive},
 import { FilterMatchMode, FilterOperator } from 'primevue/api';
@@ -71,7 +77,6 @@ const formatDate = (value) => {
         year: 'numeric'
     });
 };
-
 
 const { isDarkTheme } = useLayout();
 
@@ -183,12 +188,44 @@ watch(
     },
     { immediate: true }
 );
+const display = ref(false);
+
+onMounted(() => {
+    productService.getProductsSmall().then((data) => (products.value = data));
+});
+
+const open = () => {
+    display.value = true;
+};
+
+const close = () => {
+    display.value = false;
+};
+
+
+
+
 
 </script>
-
 <template>
+    <div class="card p-fluid">
+        <CreateCost/>
+        <h5>Dialog</h5>
+        <Dialog header="Dialog" v-model:visible="display" :breakpoints="{ '960px': '75vw' }" :style="{ width: '30vw' }" :modal="true">
+            <div class="grid p-fluid">
+                <div>
+                    <CreateCost/>
+                </div>
+            </div>
+
+            <template #footer>
+                <Button label="Ok" @click="close" icon="pi pi-check" class="p-button-outlined" />
+            </template>
+        </Dialog>
+        <Button label="Show" icon="pi pi-external-link" style="width: auto" @click="open" />
+    </div>
     <div class="card">
-        <h1 class=" mr2- mb-2">Sumario de Custos</h1>
+        <h1 class="mr2- mb-2">Sumario de Custos</h1>
         <a href="http://localhost:5173/#/uikit/menu"><Button label="Criar" class="mr-2 mb-2" /></a>
         <a href="http://localhost:5173/#/uikit/menu"> <Button label="Editar" class="p-button-secondary mr-2 mb-2" /></a>
         <Button label="Excluir" class="p-button-danger mr-2 mb-2" />
@@ -284,7 +321,6 @@ watch(
                 <span class="text-500">Desde a Última Semana</span>
             </div>
         </div>
-
     </div>
     <div class="grid">
         <div class="col-12">
@@ -411,7 +447,6 @@ watch(
             </div>
         </div>
     </div>
-
 </template>
 <style scoped lang="scss">
 @import '@/assets/demo/styles/badges.scss';

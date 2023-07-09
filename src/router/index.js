@@ -74,7 +74,7 @@ const router = createRouter({
                     component: () => import('@/components/CreateCost.vue'),
                     children: [
                         {
-                            path: '/uikit/menu',
+                            path: '/uikit/menu/personal',
                             component: () => import('@/views/uikit/menu/PersonalDemo.vue')
                         },
                         {
